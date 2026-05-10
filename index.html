@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskFlow - Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background: #0f1117; font-family: 'Inter', sans-serif; }
+        .input-dark { background: #1a1d27; border: 1px solid #2a2d3a; color: #e2e8f0; border-radius: 10px; padding: 12px 16px; width: 100%; font-size: 14px; outline: none; transition: border-color 0.2s; }
+        .input-dark::placeholder { color: #4a5068; }
+        .input-dark:focus { border-color: #6366f1; }
+        .btn-primary { background: #6366f1; color: white; border: none; border-radius: 10px; padding: 12px; width: 100%; font-size: 14px; font-weight: 600; cursor: pointer; transition: background 0.2s, transform 0.1s; }
+        .btn-primary:hover { background: #4f46e5; }
+        .btn-primary:active { transform: scale(0.98); }
+        .btn-secondary { background: transparent; color: #a78bfa; border: 1px solid #3f3f5f; border-radius: 10px; padding: 11px; width: 100%; font-size: 14px; font-weight: 600; cursor: pointer; transition: border-color 0.2s, color 0.2s, background 0.2s; }
+        .btn-secondary:hover { background: #211b35; border-color: #6366f1; color: #c4b5fd; }
+        .btn-secondary:disabled, .btn-primary:disabled { cursor: not-allowed; opacity: 0.6; }
+        .tab-btn { padding: 8px 24px; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; border: none; transition: all 0.2s; }
+        .tab-active { background: #6366f1; color: white; }
+        .tab-inactive { background: transparent; color: #4a5068; }
+        .card { background: #1a1d27; border: 1px solid #2a2d3a; border-radius: 16px; }
+        .link-btn { background: none; border: none; color: #a78bfa; font-size: 13px; cursor: pointer; }
+        .link-btn:hover { color: #c4b5fd; }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center px-4">
+    <div style="width: 100%; max-width: 420px;">
+        <div class="text-center mb-8">
+            <div style="display:inline-flex; align-items:center; gap:10px; margin-bottom:8px;">
+                <div style="width:36px; height:36px; background:#6366f1; border-radius:10px; display:flex; align-items:center; justify-content:center;">
+                    <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2">
+                        <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+                    </svg>
+                </div>
+                <span style="font-size:22px; font-weight:700; color:#e2e8f0;">TaskFlow</span>
+            </div>
+            <p style="color:#4a5068; font-size:14px;">Organize suas tarefas com eficiencia</p>
+        </div>
+
+        <div class="card" style="padding: 32px;">
+            <div id="tabs-auth" style="display:flex; gap:8px; margin-bottom:28px; background:#0f1117; border-radius:10px; padding:4px;">
+                <button class="tab-btn tab-active" id="btn-login" onclick="mostrarAba('login')" style="flex:1;">Login</button>
+                <button class="tab-btn tab-inactive" id="btn-cadastro" onclick="mostrarAba('cadastro')" style="flex:1;">Cadastro</button>
+            </div>
+
+            <div id="aba-login">
+                <div style="margin-bottom:16px;">
+                    <label style="color:#94a3b8; font-size:13px; display:block; margin-bottom:6px;">Email</label>
+                    <input id="login-email" class="input-dark" type="email" placeholder="seu@email.com"/>
+                </div>
+                <div style="margin-bottom:12px;">
+                    <label style="color:#94a3b8; font-size:13px; display:block; margin-bottom:6px;">Senha</label>
+                    <input id="login-senha" class="input-dark" type="password" placeholder="********"/>
+                </div>
+                <div style="text-align:right; margin-bottom:24px;">
+                    <button class="link-btn" onclick="abrirRecuperacao()">Esqueci minha senha</button>
+                </div>
+                <button class="btn-primary" onclick="login()">Entrar</button>
+                <p id="erro-login" style="color:#f87171; font-size:13px; text-align:center; margin-top:12px; display:none;"></p>
+            </div>
+
+            <div id="aba-cadastro" style="display:none;">
+                <div style="margin-bottom:16px;">
+                    <label style="color:#94a3b8; font-size:13px; display:block; margin-bottom:6px;">Nome</label>
+                    <input id="cadastro-nome" class="input-dark" type="text" placeholder="Seu nome"/>
+                </div>
+                <div style="margin-bottom:16px;">
+                    <label style="color:#94a3b8; font-size:13px; display:block; margin-bottom:6px;">Email</label>
+                    <input id="cadastro-email" class="input-dark" type="email" placeholder="seu@email.com"/>
+                </div>
+                <div style="margin-bottom:24px;">
+                    <label style="color:#94a3b8; font-size:13px; display:block; margin-bottom:6px;">Senha</label>
+                    <input id="cadastro-senha" class="input-dark" type="password" placeholder="Minimo 6 caracteres"/>
+                </div>
+                <button class="btn-primary" onclick="cadastrar()">Criar conta</button>
+                <p id="msg-cadastro" style="font-size:13px; text-align:center; margin-top:12px; display:none;"></p>
+            </div>
+
+            <div id="aba-verificacao" style="display:none;">
+                <div style="text-align:center; margin-bottom:24px;">
+                    <div style="width:48px; height:48px; background:#2d1b4e; border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 12px;">
+                        <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="#a78bfa" stroke-width="2">
+                            <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <p style="color:#94a3b8; font-size:14px; margin:0;">Enviamos um codigo para</p>
+                    <p style="color:#a78bfa; font-size:14px; font-weight:600; margin:4px 0 0;" id="email-enviado"></p>
+                </div>
+                <div style="margin-bottom:24px;">
+                    <label style="color:#94a3b8; font-size:13px; display:block; margin-bottom:6px;">Codigo de verificacao</label>
+                    <input id="codigo-input" class="input-dark" type="text" placeholder="000000" maxlength="6" style="text-align:center; font-size:24px; letter-spacing:8px; font-weight:700;"/>
+                </div>
+                <button class="btn-primary" onclick="verificar()">Verificar email</button>
+                <button id="btn-reenviar" class="btn-secondary" onclick="reenviarCodigo()" style="margin-top:12px;">Reenviar codigo</button>
+                <p id="msg-verificacao" style="font-size:13px; text-align:center; margin-top:12px; display:none;"></p>
+                <button onclick="mostrarAba('cadastro')" style="background:none; border:none; color:#4a5068; font-size:13px; cursor:pointer; width:100%; margin-top:12px;">Voltar para cadastro</button>
+            </div>
+
+            <div id="aba-recuperar" style="display:none;">
+                <div style="text-align:center; margin-bottom:24px;">
+                    <h2 style="color:#e2e8f0; font-size:18px; font-weight:700; margin:0 0 8px;">Recuperar senha</h2>
+                    <p style="color:#4a5068; font-size:14px; margin:0;">Digite seu email para receber um codigo.</p>
+                </div>
+                <div style="margin-bottom:24px;">
+                    <label style="color:#94a3b8; font-size:13px; display:block; margin-bottom:6px;">Email</label>
+                    <input id="recuperar-email" class="input-dark" type="email" placeholder="seu@email.com"/>
+                </div>
+                <button id="btn-recuperar" class="btn-primary" onclick="solicitarRecuperacao()">Enviar codigo</button>
+                <p id="msg-recuperar" style="font-size:13px; text-align:center; margin-top:12px; display:none;"></p>
+                <button onclick="mostrarAba('login')" style="background:none; border:none; color:#4a5068; font-size:13px; cursor:pointer; width:100%; margin-top:12px;">Voltar para login</button>
+            </div>
+
+            <div id="aba-redefinir" style="display:none;">
+                <div style="text-align:center; margin-bottom:24px;">
+                    <h2 style="color:#e2e8f0; font-size:18px; font-weight:700; margin:0 0 8px;">Nova senha</h2>
+                    <p style="color:#4a5068; font-size:14px; margin:0;">Use o codigo enviado para</p>
+                    <p style="color:#a78bfa; font-size:14px; font-weight:600; margin:4px 0 0;" id="email-recuperacao"></p>
+                </div>
+                <div style="margin-bottom:16px;">
+                    <label style="color:#94a3b8; font-size:13px; display:block; margin-bottom:6px;">Codigo</label>
+                    <input id="reset-codigo" class="input-dark" type="text" placeholder="000000" maxlength="6" style="text-align:center; font-size:24px; letter-spacing:8px; font-weight:700;"/>
+                </div>
+                <div style="margin-bottom:24px;">
+                    <label style="color:#94a3b8; font-size:13px; display:block; margin-bottom:6px;">Nova senha</label>
+                    <input id="reset-senha" class="input-dark" type="password" placeholder="Minimo 6 caracteres"/>
+                </div>
+                <button id="btn-redefinir" class="btn-primary" onclick="redefinirSenha()">Redefinir senha</button>
+                <p id="msg-redefinir" style="font-size:13px; text-align:center; margin-top:12px; display:none;"></p>
+                <button onclick="mostrarAba('recuperar')" style="background:none; border:none; color:#4a5068; font-size:13px; cursor:pointer; width:100%; margin-top:12px;">Enviar codigo novamente</button>
+            </div>
+        </div>
+    </div>
+
+<script>
+let emailPendente = ''
+let emailRecuperacao = ''
+
+function mostrarMensagem(elemento, texto, sucesso = false) {
+    elemento.textContent = texto
+    elemento.style.color = sucesso ? '#34d399' : '#f87171'
+    elemento.style.display = 'block'
+}
+
+function mostrarAba(aba) {
+    ['login', 'cadastro', 'verificacao', 'recuperar', 'redefinir'].forEach(a => {
+        document.getElementById(`aba-${a}`).style.display = a === aba ? 'block' : 'none'
+    })
+
+    document.getElementById('tabs-auth').style.display = ['login', 'cadastro'].includes(aba) ? 'flex' : 'none'
+    document.getElementById('btn-login').className = 'tab-btn ' + (aba === 'login' ? 'tab-active' : 'tab-inactive')
+    document.getElementById('btn-cadastro').className = 'tab-btn ' + (aba === 'cadastro' ? 'tab-active' : 'tab-inactive')
+}
+
+function abrirRecuperacao() {
+    const emailLogin = document.getElementById('login-email').value.trim()
+    if (emailLogin) {
+        document.getElementById('recuperar-email').value = emailLogin
+    }
+    mostrarAba('recuperar')
+}
+
+async function login() {
+    const email = document.getElementById('login-email').value.trim()
+    const senha = document.getElementById('login-senha').value
+    const erro = document.getElementById('erro-login')
+
+    try {
+        const res = await fetch('http://localhost:3000/auth/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, senha })
+        })
+        const data = await res.json()
+        if (res.ok) {
+            localStorage.setItem('token', data.token)
+            window.location.href = 'tarefas.html'
+        } else {
+            mostrarMensagem(erro, data.mensagem)
+        }
+    } catch {
+        mostrarMensagem(erro, 'Servidor offline. Ligue o backend!')
+    }
+}
+
+async function cadastrar() {
+    const nome = document.getElementById('cadastro-nome').value.trim()
+    const email = document.getElementById('cadastro-email').value.trim()
+    const senha = document.getElementById('cadastro-senha').value
+    const msg = document.getElementById('msg-cadastro')
+
+    try {
+        const res = await fetch('http://localhost:3000/auth/cadastro', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ nome, email, senha })
+        })
+        const data = await res.json()
+        if (res.ok) {
+            emailPendente = email
+            document.getElementById('email-enviado').textContent = email
+            mostrarAba('verificacao')
+        } else {
+            mostrarMensagem(msg, data.mensagem)
+        }
+    } catch {
+        mostrarMensagem(msg, 'Servidor offline. Ligue o backend!')
+    }
+}
+
+async function verificar() {
+    const codigo = document.getElementById('codigo-input').value.trim()
+    const msg = document.getElementById('msg-verificacao')
+
+    try {
+        const res = await fetch('http://localhost:3000/auth/verificar', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: emailPendente, codigo })
+        })
+        const data = await res.json()
+        if (res.ok) {
+            mostrarMensagem(msg, 'Email verificado! Redirecionando...', true)
+            setTimeout(() => mostrarAba('login'), 1500)
+        } else {
+            mostrarMensagem(msg, data.mensagem)
+        }
+    } catch {
+        mostrarMensagem(msg, 'Servidor offline. Ligue o backend!')
+    }
+}
+
+async function reenviarCodigo() {
+    const msg = document.getElementById('msg-verificacao')
+    const botao = document.getElementById('btn-reenviar')
+
+    if (!emailPendente) {
+        mostrarMensagem(msg, 'Informe o email no cadastro antes de reenviar.')
+        return
+    }
+
+    botao.disabled = true
+    botao.textContent = 'Enviando...'
+    msg.style.display = 'none'
+
+    try {
+        const res = await fetch('http://localhost:3000/auth/reenviar-codigo', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: emailPendente })
+        })
+        const data = await res.json()
+        mostrarMensagem(msg, data.mensagem, res.ok)
+    } catch {
+        mostrarMensagem(msg, 'Servidor offline. Ligue o backend!')
+    } finally {
+        botao.disabled = false
+        botao.textContent = 'Reenviar codigo'
+    }
+}
+
+async function solicitarRecuperacao() {
+    const email = document.getElementById('recuperar-email').value.trim()
+    const msg = document.getElementById('msg-recuperar')
+    const botao = document.getElementById('btn-recuperar')
+
+    if (!email) {
+        mostrarMensagem(msg, 'Informe seu email.')
+        return
+    }
+
+    botao.disabled = true
+    botao.textContent = 'Enviando...'
+    msg.style.display = 'none'
+
+    try {
+        const res = await fetch('http://localhost:3000/auth/esqueci-senha', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email })
+        })
+        const data = await res.json()
+
+        if (res.ok) {
+            emailRecuperacao = email
+            document.getElementById('email-recuperacao').textContent = email
+            mostrarMensagem(msg, data.mensagem, true)
+            setTimeout(() => mostrarAba('redefinir'), 900)
+        } else {
+            mostrarMensagem(msg, data.mensagem)
+        }
+    } catch {
+        mostrarMensagem(msg, 'Servidor offline. Ligue o backend!')
+    } finally {
+        botao.disabled = false
+        botao.textContent = 'Enviar codigo'
+    }
+}
+
+async function redefinirSenha() {
+    const codigo = document.getElementById('reset-codigo').value.trim()
+    const novaSenha = document.getElementById('reset-senha').value
+    const msg = document.getElementById('msg-redefinir')
+    const botao = document.getElementById('btn-redefinir')
+
+    if (!emailRecuperacao || !codigo || !novaSenha) {
+        mostrarMensagem(msg, 'Preencha codigo e nova senha.')
+        return
+    }
+
+    botao.disabled = true
+    botao.textContent = 'Salvando...'
+    msg.style.display = 'none'
+
+    try {
+        const res = await fetch('http://localhost:3000/auth/redefinir-senha', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: emailRecuperacao, codigo, novaSenha })
+        })
+        const data = await res.json()
+
+        if (res.ok) {
+            mostrarMensagem(msg, 'Senha redefinida! Voltando para o login...', true)
+            document.getElementById('login-email').value = emailRecuperacao
+            document.getElementById('login-senha').value = ''
+            setTimeout(() => mostrarAba('login'), 1500)
+        } else {
+            mostrarMensagem(msg, data.mensagem)
+        }
+    } catch {
+        mostrarMensagem(msg, 'Servidor offline. Ligue o backend!')
+    } finally {
+        botao.disabled = false
+        botao.textContent = 'Redefinir senha'
+    }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<svg width="1280" height="360" viewBox="0 0 1280 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1280" y2="360" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#030006"/>
+      <stop offset="0.45" stop-color="#09000F"/>
+      <stop offset="1" stop-color="#140021"/>
+    </linearGradient>
+    <linearGradient id="purple" x1="130" y1="55" x2="1120" y2="315" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7C3AED"/>
+      <stop offset="0.5" stop-color="#C026D3"/>
+      <stop offset="1" stop-color="#A855F7"/>
+    </linearGradient>
+    <radialGradient id="glowA" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1030 96) rotate(138) scale(310 190)">
+      <stop stop-color="#A855F7" stop-opacity="0.85"/>
+      <stop offset="0.45" stop-color="#7C3AED" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#030006" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowB" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(190 296) rotate(-20) scale(260 160)">
+      <stop stop-color="#C026D3" stop-opacity="0.72"/>
+      <stop offset="0.5" stop-color="#7C3AED" stop-opacity="0.24"/>
+      <stop offset="1" stop-color="#030006" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="42" height="42" patternUnits="userSpaceOnUse">
+      <path d="M42 0H0V42" stroke="#2E1144" stroke-width="1"/>
+    </pattern>
+    <filter id="textGlow" x="-10%" y="-30%" width="120%" height="160%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="2.2" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.66 0 0 0 0 0.33 0 0 0 0 0.97 0 0 0 0.9 0"/>
+      <feBlend in2="SourceGraphic" mode="screen"/>
+    </filter>
+    <filter id="cardGlow" x="-40%" y="-40%" width="180%" height="180%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.49 0 0 0 0 0.23 0 0 0 0 0.93 0 0 0 0.9 0"/>
+      <feBlend in2="SourceGraphic" mode="screen"/>
+    </filter>
+  </defs>
+
+  <rect width="1280" height="360" fill="url(#bg)"/>
+  <rect width="1280" height="360" fill="url(#grid)" opacity="0.45"/>
+  <rect width="1280" height="360" fill="url(#glowA)"/>
+  <rect width="1280" height="360" fill="url(#glowB)"/>
+
+  <path d="M0 292C164 216 286 336 456 260C610 191 720 100 915 165C1080 220 1148 112 1280 148" stroke="url(#purple)" stroke-width="5" opacity="0.95"/>
+  <path d="M0 315C190 242 330 342 500 286C672 230 770 156 930 211C1092 266 1164 180 1280 208" stroke="#E879F9" stroke-width="2" opacity="0.58"/>
+  <path d="M870 58L1128 58L1186 116L1186 246L1128 304L870 304L812 246L812 116L870 58Z" stroke="#7C3AED" stroke-width="2" opacity="0.26"/>
+
+  <g transform="translate(90 82)" filter="url(#cardGlow)">
+    <rect x="0" y="0" width="92" height="92" rx="22" fill="#12001F" stroke="#A855F7" stroke-width="3"/>
+    <rect x="18" y="20" width="56" height="10" rx="5" fill="#E879F9"/>
+    <path d="M29 50L41 62L65 36" stroke="#F5D0FE" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <g transform="translate(212 72)">
+    <text x="0" y="62" fill="#FAF5FF" font-family="Montserrat, Poppins, Inter, Segoe UI, Arial, sans-serif" font-size="60" font-weight="900" letter-spacing="0" filter="url(#textGlow)">
+      Gustavo Verenka
+    </text>
+    <text x="3" y="108" fill="#E879F9" font-family="Montserrat, Poppins, Inter, Segoe UI, Arial, sans-serif" font-size="26" font-weight="800" letter-spacing="0.4">
+      Back-end Development Student
+    </text>
+    <text x="3" y="149" fill="#C4B5FD" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="22" font-weight="600" letter-spacing="0">
+      Building APIs with Node.js, Express, PostgreSQL and Prisma
+    </text>
+  </g>
+
+  <g transform="translate(212 248)">
+    <rect x="0" y="0" width="118" height="38" rx="11" fill="#100018" stroke="#7C3AED" stroke-width="1.4"/>
+    <text x="20" y="25" fill="#F0ABFC" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="15" font-weight="800">JavaScript</text>
+
+    <rect x="134" y="0" width="94" height="38" rx="11" fill="#100018" stroke="#7C3AED" stroke-width="1.4"/>
+    <text x="154" y="25" fill="#F5D0FE" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="15" font-weight="800">Node.js</text>
+
+    <rect x="244" y="0" width="90" height="38" rx="11" fill="#100018" stroke="#7C3AED" stroke-width="1.4"/>
+    <text x="264" y="25" fill="#E9D5FF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="15" font-weight="800">Express</text>
+
+    <rect x="350" y="0" width="122" height="38" rx="11" fill="#100018" stroke="#7C3AED" stroke-width="1.4"/>
+    <text x="370" y="25" fill="#DDD6FE" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="15" font-weight="800">PostgreSQL</text>
+
+    <rect x="488" y="0" width="86" height="38" rx="11" fill="#100018" stroke="#7C3AED" stroke-width="1.4"/>
+    <text x="510" y="25" fill="#F5D0FE" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="15" font-weight="800">Prisma</text>
+  </g>
+
+  <g opacity="0.72" font-family="JetBrains Mono, Consolas, 'Courier New', monospace" font-size="18" fill="#A78BFA">
+    <text x="880" y="112">const dev = "gustavodev";</text>
+    <text x="880" y="146">app.use(helmet());</text>
+    <text x="880" y="180">router.post("/auth/login");</text>
+    <text x="880" y="214">await prisma.usuario.findUnique()</text>
+    <text x="880" y="248">jwt.sign({ id }, JWT_SECRET)</text>
+  </g>
+
+  <rect x="0" y="0" width="1280" height="360" stroke="#7C3AED" stroke-width="3" opacity="0.45"/>
+</svg>
