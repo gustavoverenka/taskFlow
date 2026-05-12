@@ -35,7 +35,7 @@ This project was built as part of my back-end development studies, focusing on R
 ## Project Structure
 
 ```txt
-Project-final-API/
+taskFlow/
 |-- prisma/
 |   |-- schema.prisma
 |-- src/
@@ -52,33 +52,49 @@ Project-final-API/
 
 ## Getting Started
 
+### Prerequisites
+
+Make sure you have the following installed before starting:
+
+- [Node.js](https://nodejs.org/) (v18 or higher recommended)
+- [PostgreSQL](https://www.postgresql.org/)
+- A Gmail account (for email sending via Nodemailer)
+
 ### 1. Clone the repository
 
 ```bash
-git clone YOUR_REPOSITORY_URL
+git clone https://github.com/gustavoverenka/taskFlow.git
 ```
 
 ### 2. Enter the project folder
 
 ```bash
-cd Project-final-API
+cd taskFlow
 ```
 
 ### 3. Install dependencies
 
+**Linux / macOS:**
 ```bash
 npm install
 ```
 
-On Windows, if PowerShell blocks the command, use:
-
+**Windows (PowerShell):**
 ```bash
 npm.cmd install
 ```
 
+> If PowerShell blocks the command, try running it as Administrator or use the Node.js Command Prompt instead.
+
 ### 4. Configure environment variables
 
-Create a `.env` file in the project root:
+Copy the example file and fill in your own values:
+
+```bash
+cp .env.example .env
+```
+
+Then open the `.env` file and edit it:
 
 ```env
 DATABASE_URL="postgresql://user:password@localhost:5432/database_name"
@@ -88,27 +104,35 @@ EMAIL_PASS="your_app_password"
 PORT=3000
 ```
 
+> For `EMAIL_PASS`, use a [Gmail App Password](https://support.google.com/accounts/answer/185833), not your regular Gmail password.
+
 ### 5. Run Prisma migrations
 
+**Linux / macOS:**
 ```bash
 npx prisma migrate dev
 ```
 
-On Windows, if needed:
-
+**Windows (PowerShell):**
 ```bash
 npx.cmd prisma migrate dev
 ```
 
 ### 6. Start the server
 
+**Linux / macOS:**
+```bash
+node index.js
+```
+
+**Windows:**
 ```bash
 node index.js
 ```
 
 The API will be available at:
 
-```txt
+```
 http://localhost:3000
 ```
 
@@ -117,7 +141,7 @@ http://localhost:3000
 ### Authentication
 
 | Method | Route | Description |
-|---|---|---|
+|--------|-------|-------------|
 | POST | `/auth/cadastro` | Registers a new user |
 | POST | `/auth/verificar` | Verifies the user's email |
 | POST | `/auth/reenviar-codigo` | Resends the email verification code |
@@ -127,8 +151,11 @@ http://localhost:3000
 
 ### Tasks
 
+> All task routes require a valid JWT token in the `Authorization` header:
+> `Authorization: Bearer <your_token>`
+
 | Method | Route | Description |
-|---|---|---|
+|--------|-------|-------------|
 | GET | `/tarefas` | Lists tasks from the authenticated user |
 | POST | `/tarefas` | Creates a new task |
 | PUT | `/tarefas/:id` | Updates a task |
@@ -140,6 +167,8 @@ http://localhost:3000
 ### Register
 
 ```json
+POST /auth/cadastro
+
 {
   "nome": "John Doe",
   "email": "john@example.com",
@@ -150,6 +179,8 @@ http://localhost:3000
 ### Verify Email
 
 ```json
+POST /auth/verificar
+
 {
   "email": "john@example.com",
   "codigo": "123456"
@@ -159,6 +190,8 @@ http://localhost:3000
 ### Login
 
 ```json
+POST /auth/login
+
 {
   "email": "john@example.com",
   "senha": "123456"
@@ -176,6 +209,9 @@ Example response:
 ### Create Task
 
 ```json
+POST /tarefas
+Authorization: Bearer <your_token>
+
 {
   "titulo": "Study Prisma",
   "descricao": "Practice migrations and relationships",
@@ -186,11 +222,15 @@ Example response:
 
 ## Task Filters
 
+You can filter tasks using query parameters:
+
 ```http
 GET /tarefas?prioridade=ALTA
 GET /tarefas?concluida=false
 GET /tarefas?prioridade=ALTA&concluida=false
 ```
+
+Available values for `prioridade`: `ALTA`, `MEDIA`, `BAIXA`
 
 ## Security
 
@@ -199,7 +239,7 @@ This project includes:
 - Password hashing with bcryptjs
 - JWT authentication
 - Protected task routes with middleware
-- Email verification
+- Email verification on registration
 - Password recovery with temporary code
 - Sensitive data stored in environment variables
 - Basic HTTP security headers with Helmet
@@ -210,8 +250,8 @@ During this project, I practiced:
 
 - Building REST APIs with Express
 - User authentication with JWT
-- Password encryption
-- Database modeling with Prisma
+- Password encryption with bcryptjs
+- Database modeling with Prisma ORM
 - PostgreSQL integration
 - Sending emails with Nodemailer
 - Protecting routes with middleware
