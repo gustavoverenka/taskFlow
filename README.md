@@ -1,100 +1,168 @@
-# TaskFlow
+<div align="center">
 
-TaskFlow is a task management application with user authentication, email verification, password recovery, and private tasks for each user.
+<img src="https://capsule-render.vercel.app/api?type=blur&color=0:000000,100:0D0D0D&height=180&section=header&text=TASKFLOW&fontSize=52&fontColor=ffffff&fontAlignY=45&desc=REST%20API%20%E2%80%A2%20AUTH%20%E2%80%A2%20TASK%20MANAGEMENT&descAlignY=68&descSize=15&letterSpacing=6" width="100%"/>
 
-This project was built as part of my back-end development studies, focusing on REST APIs, authentication, database relationships, and integration with external services.
+<br/>
 
-## Features
+<sub>Back-end study project · JWT authentication · Email verification · Private task management</sub>
 
+<br/><br/>
+
+`Node.js` `Express` `PostgreSQL` `Prisma` `JWT` `bcryptjs` `Nodemailer` `Helmet`
+
+<br/>
+
+▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔
+
+</div>
+
+<br/>
+
+## ⎡ ABOUT ⎦
+
+TaskFlow is a task management API with user authentication, email
+verification, password recovery, and private tasks per user.
+
+Built as part of my back-end development studies, focused on
+**REST APIs**, **authentication**, **database relationships**, and
+**integration with external services**.
+
+<div align="center">
+
+▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+
+</div>
+
+## ⎡ FEATURES ⎦
+
+<table width="100%">
+<tr>
+<td width="50%" valign="top">
+
+**Auth & Users**
 - User registration
 - Email verification with code
 - Login with JWT authentication
 - Password recovery by email
-- Create tasks
-- List tasks from the authenticated user
+
+</td>
+<td width="50%" valign="top">
+
+**Tasks**
+- Create, list, update, delete tasks
 - Mark tasks as completed
-- Delete tasks
-- Task priority: low, medium, and high
-- Task due date
-- Filter tasks by priority and status
+- Priority levels: low · medium · high
+- Due dates + filters by priority / status
 
-## Technologies
+</td>
+</tr>
+</table>
 
-- Node.js
-- Express
-- PostgreSQL
-- Prisma ORM
-- JWT
-- bcryptjs
-- Nodemailer
-- Helmet
-- HTML
-- CSS
-- JavaScript
+<div align="center">
 
-## Project Structure
+▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+
+</div>
+
+## ⎡ TECH STACK ⎦
+
+<div align="center">
+
+<table width="100%">
+<tr>
+<td align="center" width="16.6%">
+<img src="https://cdn.simpleicons.org/nodedotjs/339933" width="38"/><br/>
+<sub><b>Node.js</b></sub>
+</td>
+<td align="center" width="16.6%">
+<img src="https://cdn.simpleicons.org/express/FFFFFF" width="38"/><br/>
+<sub><b>Express</b></sub>
+</td>
+<td align="center" width="16.6%">
+<img src="https://cdn.simpleicons.org/postgresql/4169E1" width="38"/><br/>
+<sub><b>PostgreSQL</b></sub>
+</td>
+<td align="center" width="16.6%">
+<img src="https://cdn.simpleicons.org/prisma/FFFFFF" width="38"/><br/>
+<sub><b>Prisma</b></sub>
+</td>
+<td align="center" width="16.6%">
+<img src="https://cdn.simpleicons.org/jsonwebtokens/FFFFFF" width="38"/><br/>
+<sub><b>JWT</b></sub>
+</td>
+<td align="center" width="16.6%">
+<img src="https://cdn.simpleicons.org/javascript/F7DF1E" width="38"/><br/>
+<sub><b>JavaScript</b></sub>
+</td>
+</tr>
+</table>
+
+</div>
+
+<div align="center">
+
+▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+
+</div>
+
+## ⎡ PROJECT STRUCTURE ⎦
 
 ```txt
 taskFlow/
-|-- prisma/
-|   |-- schema.prisma
-|-- src/
-|   |-- controllers/
-|   |-- middleware/
-|   |-- routes/
-|   |-- services/
-|-- index.html
-|-- tarefas.html
-|-- index.js
-|-- package.json
-|-- README.md
+├── prisma/
+│   └── schema.prisma
+├── src/
+│   ├── controllers/
+│   ├── middleware/
+│   ├── routes/
+│   └── services/
+├── index.html
+├── tarefas.html
+├── index.js
+├── package.json
+└── README.md
 ```
 
-## Getting Started
+<div align="center">
 
-### Prerequisites
+▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
 
-Make sure you have the following installed before starting:
+</div>
 
-- [Node.js](https://nodejs.org/) (v18 or higher recommended)
+## ⎡ GETTING STARTED ⎦
+
+**Prerequisites**
+
+- [Node.js](https://nodejs.org/) v18+
 - [PostgreSQL](https://www.postgresql.org/)
-- A Gmail account (for email sending via Nodemailer)
+- A Gmail account (for Nodemailer)
 
-### 1. Clone the repository
+<br/>
+
+**1 · Clone the repository**
 
 ```bash
 git clone https://github.com/gustavoverenka/taskFlow.git
-```
-
-### 2. Enter the project folder
-
-```bash
 cd taskFlow
 ```
 
-### 3. Install dependencies
+**2 · Install dependencies**
 
-**Linux / macOS:**
 ```bash
+# Linux / macOS
 npm install
-```
 
-**Windows (PowerShell):**
-```bash
+# Windows (PowerShell)
 npm.cmd install
 ```
 
-> If PowerShell blocks the command, try running it as Administrator or use the Node.js Command Prompt instead.
+> If PowerShell blocks the command, run it as Administrator or use the Node.js Command Prompt.
 
-### 4. Configure environment variables
-
-Copy the example file and fill in your own values:
+**3 · Configure environment variables**
 
 ```bash
 cp .env.example .env
 ```
-
-Then open the `.env` file and edit it:
 
 ```env
 DATABASE_URL="postgresql://user:password@localhost:5432/database_name"
@@ -104,67 +172,72 @@ EMAIL_PASS="your_app_password"
 PORT=3000
 ```
 
-> For `EMAIL_PASS`, use a [Gmail App Password](https://support.google.com/accounts/answer/185833), not your regular Gmail password.
+> Use a [Gmail App Password](https://support.google.com/accounts/answer/185833) for `EMAIL_PASS`, not your regular password.
 
-### 5. Run Prisma migrations
+**4 · Run Prisma migrations**
 
-**Linux / macOS:**
 ```bash
+# Linux / macOS
 npx prisma migrate dev
-```
 
-**Windows (PowerShell):**
-```bash
+# Windows (PowerShell)
 npx.cmd prisma migrate dev
 ```
 
-### 6. Start the server
+**5 · Start the server**
 
-**Linux / macOS:**
 ```bash
 node index.js
 ```
 
-**Windows:**
-```bash
-node index.js
-```
+<div align="center">
 
-The API will be available at:
+API available at **`http://localhost:3000`**
 
-```
-http://localhost:3000
-```
+</div>
 
-## API Routes
+<div align="center">
 
-### Authentication
+▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+
+</div>
+
+## ⎡ API ROUTES ⎦
+
+**Authentication**
 
 | Method | Route | Description |
-|--------|-------|-------------|
-| POST | `/auth/cadastro` | Registers a new user |
-| POST | `/auth/verificar` | Verifies the user's email |
-| POST | `/auth/reenviar-codigo` | Resends the email verification code |
-| POST | `/auth/login` | Logs in and returns a JWT token |
-| POST | `/auth/esqueci-senha` | Sends a password recovery code |
-| POST | `/auth/redefinir-senha` | Resets the user's password |
+|:------:|-------|-------------|
+| `POST` | `/auth/cadastro` | Registers a new user |
+| `POST` | `/auth/verificar` | Verifies the user's email |
+| `POST` | `/auth/reenviar-codigo` | Resends the verification code |
+| `POST` | `/auth/login` | Logs in and returns a JWT token |
+| `POST` | `/auth/esqueci-senha` | Sends a password recovery code |
+| `POST` | `/auth/redefinir-senha` | Resets the user's password |
 
-### Tasks
+**Tasks**
 
-> All task routes require a valid JWT token in the `Authorization` header:
+> All task routes require a valid JWT token:
 > `Authorization: Bearer <your_token>`
 
 | Method | Route | Description |
-|--------|-------|-------------|
-| GET | `/tarefas` | Lists tasks from the authenticated user |
-| POST | `/tarefas` | Creates a new task |
-| PUT | `/tarefas/:id` | Updates a task |
-| PATCH | `/tarefas/:id/completar` | Marks a task as completed |
-| DELETE | `/tarefas/:id` | Deletes a task |
+|:------:|-------|-------------|
+| `GET` | `/tarefas` | Lists tasks from the authenticated user |
+| `POST` | `/tarefas` | Creates a new task |
+| `PUT` | `/tarefas/:id` | Updates a task |
+| `PATCH` | `/tarefas/:id/completar` | Marks a task as completed |
+| `DELETE` | `/tarefas/:id` | Deletes a task |
 
-## Request Examples
+<div align="center">
 
-### Register
+▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+
+</div>
+
+## ⎡ REQUEST EXAMPLES ⎦
+
+<details>
+<summary><b>Register</b></summary>
 
 ```json
 POST /auth/cadastro
@@ -176,7 +249,10 @@ POST /auth/cadastro
 }
 ```
 
-### Verify Email
+</details>
+
+<details>
+<summary><b>Verify Email</b></summary>
 
 ```json
 POST /auth/verificar
@@ -187,7 +263,10 @@ POST /auth/verificar
 }
 ```
 
-### Login
+</details>
+
+<details>
+<summary><b>Login</b></summary>
 
 ```json
 POST /auth/login
@@ -198,7 +277,7 @@ POST /auth/login
 }
 ```
 
-Example response:
+Response:
 
 ```json
 {
@@ -206,7 +285,10 @@ Example response:
 }
 ```
 
-### Create Task
+</details>
+
+<details>
+<summary><b>Create Task</b></summary>
 
 ```json
 POST /tarefas
@@ -220,9 +302,11 @@ Authorization: Bearer <your_token>
 }
 ```
 
-## Task Filters
+</details>
 
-You can filter tasks using query parameters:
+<br/>
+
+**Task Filters**
 
 ```http
 GET /tarefas?prioridade=ALTA
@@ -230,23 +314,31 @@ GET /tarefas?concluida=false
 GET /tarefas?prioridade=ALTA&concluida=false
 ```
 
-Available values for `prioridade`: `ALTA`, `MEDIA`, `BAIXA`
+Available values for `prioridade`: `ALTA` · `MEDIA` · `BAIXA`
 
-## Security
+<div align="center">
 
-This project includes:
+▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
 
-- Password hashing with bcryptjs
+</div>
+
+## ⎡ SECURITY ⎦
+
+- Password hashing with `bcryptjs`
 - JWT authentication
 - Protected task routes with middleware
 - Email verification on registration
 - Password recovery with temporary code
 - Sensitive data stored in environment variables
-- Basic HTTP security headers with Helmet
+- Basic HTTP security headers with `Helmet`
 
-## What I Learned
+<div align="center">
 
-During this project, I practiced:
+▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+
+</div>
+
+## ⎡ WHAT I LEARNED ⎦
 
 - Building REST APIs with Express
 - User authentication with JWT
@@ -258,15 +350,27 @@ During this project, I practiced:
 - Consuming an API with fetch on the front-end
 - Working with filters using query parameters
 
-## Future Improvements
+<div align="center">
 
-- Deploy the application
-- Add automated tests
-- Add Swagger/OpenAPI documentation
-- Improve responsive design
-- Add task editing in the front-end
-- Improve error handling and validations
+▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
 
-## Project Status
+</div>
 
-This project is under development for study and portfolio purposes.
+## ⎡ ROADMAP ⎦
+
+- [ ] Deploy the application
+- [ ] Add automated tests
+- [ ] Add Swagger/OpenAPI documentation
+- [ ] Improve responsive design
+- [ ] Add task editing in the front-end
+- [ ] Improve error handling and validations
+
+<br/>
+
+<div align="center">
+
+<sub>◈ project status: under development for study and portfolio purposes ◈</sub>
+
+</div>
+
+<img src="https://capsule-render.vercel.app/api?type=blur&color=0:0D0D0D,100:000000&height=90&section=footer" width="100%"/>
