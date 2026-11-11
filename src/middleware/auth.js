@@ -1,14 +1,15 @@
 const jwt = require('jsonwebtoken')
 
 function verificarToken(req, res, next) {
-    const token = req.headers.authorization?.split(' ')[1]
+    const authorization = req.headers.authorization
+    const match = typeof authorization === 'string' && /^Bearer ([^\s]+)$/.exec(authorization)
 
-    if (!token) {
+    if (!match) {
         return res.status(401).json({ mensagem: 'Token não fornecido!' })
     }
 
     try {
-        const dados = jwt.verify(token, process.env.JWT_SECRET)
+        const dados = jwt.verify(match[1], process.env.JWT_SECRET)
         req.usuario = dados
         next()
     } catch {
